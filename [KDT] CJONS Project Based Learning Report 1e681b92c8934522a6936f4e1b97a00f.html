@@ -1,0 +1,638 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[KDT] CJONS Project Based Learning Report </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e681b92-c893-4522-a693-6f4e1b97a00f" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">💻</span></div><h1 class="page-title">[KDT] CJONS Project Based Learning Report </h1></header><div class="page-body"><nav id="57baaf41-13cf-4f86-95d1-a073ce871ebe" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03b94ded-3c8f-4950-9595-892829cd5707">google colab - stylegan issue</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1efe02b3-3942-4c4f-a87c-fbc8d1d038a4">0. 화이트보드</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#79173979-4dfb-499e-a2db-7b324c98df95">한승현 : songhune@ajou.ac.kr // 010-3901-5554</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d818d527-2d74-4e81-bca9-42ba72e5694b">1. 보고서 양식 개요 및 설명</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#51ab8aaa-ab90-4127-a24e-bce4cf1c0579">2. 템플릿 이용 및 세부 페이지</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa20a8c7-90b4-4b2e-9965-1479a6d032e2">2.1. 템플릿 및 컨벤션</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#536b6f40-34d7-4b48-9295-b13264fbce6c">2.2. 리서치-end-to-end 프로젝트</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c27f6b2-f0fe-45f9-a6a5-80102c447769">2.2.1 개인별 페이지 모음</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7ea9b5f8-a0b2-49b2-b140-41f9246b9a9d">설문조사_post_session</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f4734812-435b-48a1-a2bd-0bcb53407d6c">프로젝트_1+2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#353a6e3a-c6c8-42ee-9ae0-8129158f0d07">다 작성하신 분은 바로 여기에 업데이트 해 주세요!</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c82fddd7-3439-48aa-8803-fd674003b9bc">3. 참고사항</a></div></nav><p id="40a54ceb-d5a1-4ce3-b1c2-9da885f89e8d" class="">
+</p><h1 id="03b94ded-3c8f-4950-9595-892829cd5707" class="">google colab - stylegan issue</h1><p id="ae113beb-3628-44d2-a4c0-85c09b158589" class=""><a href="https://colab.research.google.com/github/parthsuresh/stylegan2-colab/blob/master/StyleGAN2_Google_Colab.ipynb">https://colab.research.google.com/github/parthsuresh/stylegan2-colab/blob/master/StyleGAN2_Google_Colab.ipynb</a></p><h1 id="1efe02b3-3942-4c4f-a87c-fbc8d1d038a4" class="">0. 화이트보드</h1><h3 id="79173979-4dfb-499e-a2db-7b324c98df95" class="">한승현 : songhune@ajou.ac.kr // 010-3901-5554</h3><h1 id="d818d527-2d74-4e81-bca9-42ba72e5694b" class="">1. 보고서 양식 개요 및 설명</h1><ul id="f365421c-83d6-4833-b4ba-f32ae4baf5ba" class="toggle"><li><details open=""><summary>08.26일 cover</summary><p id="a887f0e9-706b-4b1a-ab89-02ee5463e689" class="">일부 특수한 개발 방법론(<a href="https://www.redhat.com/ko/devops/what-is-agile-methodology">애자일 방법론</a>, <a href="https://ko.wikipedia.org/wiki/%ED%85%8C%EC%8A%A4%ED%8A%B8_%EC%A3%BC%EB%8F%84_%EA%B0%9C%EB%B0%9C">테스트 주도 개발 방법론</a> 등)을 제외하면, 소프트웨어를 체계적으로 개발하고 관리하기 위해, 개발 과정에 따른 소프트웨어의 생명 주기(Software Life Cycle)라는 것이 있습니다. 보통 6단계로 나누어지며 이는 </p><ul id="5e514b13-2ca0-48da-9d35-1655f853af10" class="toggle"><li><details open=""><summary>요구사항 분석의 6단계</summary><p id="5ce477a7-a14c-4ce5-9c85-e626572d3d7f" class="">요구사항 분석</p><p id="a2b9204d-5435-48e9-acfe-3d4bbc903e38" class="">시스템 명세</p><p id="159aca9e-17a2-4cbb-a964-c41c557b3457" class="">설계</p><p id="6b9380ba-d5e0-4643-8c95-27d9f56b5e7e" class="">프로그래밍</p><p id="db525d02-d7ee-4949-b40c-26ab92db9720" class="">테스트</p><p id="b770cc81-33e8-4881-8012-98b1a8e0728e" class="">유지보수</p></details></li></ul><p id="aa899e66-c769-4797-9853-bd6054a5df11" class="">의 단계를 따릅니다. 본 프로젝트에서는 이같은 소프트웨어 라이프 사이클의 구성을 일부 차용하여, <span style="border-bottom:0.05em solid"><strong>시스템의 명세와 설계~테스트까지의 단계를 압축하여 수행하고 그 결과물을 최소한의 보고서 양식으로 정리할 것을 요구</strong></span>하고자 합니다. 특히, Bottom-Scratch(아무런 Backbone 아키텍쳐 없이 시작하는 프로젝트)가 아니라 나름 검증된 프레임워크와 많이 사용된 Task를 프로젝트 레벨에서 올리는 만큼 남이 만든 코드 위에 여러분들의 최적화나 창의성을 부여해야 하므로, 이같은 문서 작업은 결과물의 관리와 포트폴리오로도 활용할 수 있다는 점에서 여러분에게도 효율적일 것이라 생각됩니다.  </p><hr id="dcd38135-82d1-4d49-9c2e-c4b5009557e5"/><p id="346a75cf-a4ba-4177-b00b-1ca151419fcd" class="">추가적으로, 여러분들의 사전 지식 평가를 위해 아래와 같은 설문조사를 추가적으로 배치하였습니다. 설문에 응해주시면 감사하겠습니다.</p><p id="ae674ea8-e9d7-4b3d-8dde-d648b900aa10" class=""><a href="https://forms.gle/H3WmFkma3vPG9qSL6">https://forms.gle/H3WmFkma3vPG9qSL6</a></p></details></li></ul><hr id="2b90d939-a394-40a6-b24a-8110d533570c"/><h1 id="51ab8aaa-ab90-4127-a24e-bce4cf1c0579" class="">2. 템플릿 이용 및 세부 페이지</h1><h2 id="aa20a8c7-90b4-4b2e-9965-1479a6d032e2" class="">2.1. 템플릿 및 컨벤션</h2><ul id="5aaa6be0-1292-451f-8624-7e497c80bb85" class="toggle"><li><details open=""><summary></summary><ul id="870f55fa-aba2-4996-8f62-33c18974adc1" class="bulleted-list"><li>여러분들의 팀이 구성되면 팀 브랜딩과 프로젝트 전체적인 진행을 관리하는 매니저(팀장)이 기본적인 최종 문서들의 최종 버전을 검토하고 제출하는 역할을 부여받게 됩니다.</li></ul><ul id="1d03f4cf-b9d8-440f-98e8-6617a7dd4320" class="bulleted-list"><li>사용하시는 툴은 본 문서가 작성된 Notion 앱의 편집기로 일괄적으로 통일하도록 하겠습니다. </li></ul></details></li></ul><h2 id="536b6f40-34d7-4b48-9295-b13264fbce6c" class="">2.2. 리서치-end-to-end 프로젝트</h2><p id="3c53e99a-c586-4173-ad66-43bb748884b1" class="">문서화(documentation)의 경우 해당 하위 문서에서 작성하기 바랍니다.</p><figure id="92058c84-7e91-4372-9b7e-ba0a4d4df202" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%85%E1%85%B5%E1%84%89%E1%85%A5%E1%84%8E%E1%85%B5%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%2092058c847e9143729b7eba0a4d4df202.html"><span class="icon">📝</span>리서치 프로젝트</a></figure><ul id="82b248f1-5db4-4474-a7f6-6a6bf43456cd" class="bulleted-list"><li>팀 브랜딩-팀 구성과 코드 관리, 저와의 소통, 다른 사람이 봐도 &#x27;이 팀이 어떤 프로젝트를 하는지 알 수 있는&#x27;관련 자료를 작성하는 곳입니다.</li></ul><ul id="21023428-540c-4101-b7e8-ab0aacf13a27" class="bulleted-list"><li>선택한 주제에 대한 관련 연구, 알고리즘 등 이론적인 부분을 작성하는 부분입니다.</li></ul><ul id="01739f7b-89a3-48dd-b6eb-43c68acb092d" class="bulleted-list"><li>본인들만의 아이디어가 추가로 들어가면 best입니다.</li></ul><h3 id="1c27f6b2-f0fe-45f9-a6a5-80102c447769" class="">2.2.1 개인별 페이지 모음</h3><ul id="757f4b85-90e2-42bd-9c6f-4d851d5336b5" class="toggle"><li><details open=""><summary>개인별 페이지</summary><figure id="ba50b3d7-4a1f-413a-9c3e-75bb4bf0671e" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%8B%E1%85%A9%E1%84%89%E1%85%A9%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AF%20%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20ba50b3d74a1f413a9c3e75bb4bf0671e.html">오송렬 의 사본</a></figure><figure id="a7855146-b187-4e25-8dc5-7a66a20bcb69" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%87%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%86%E1%85%B5%E1%86%AB%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20a7855146b1874e258dc57a66a20bcb69.html">박성민의 사본</a></figure><figure id="1e8d63c4-7696-4059-833f-425d20cd2f5a" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%92%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A6%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%201e8d63c476964059833f425d20cd2f5a.html">홍세원의 사본</a></figure><figure id="e79b72f4-1cfd-4de4-a507-f2fbf6ccc14e" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%8B%E1%85%B5%E1%84%92%E1%85%A9%E1%84%89%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20e79b72f41cfd4de4a507f2fbf6ccc14e.html">이호세의 사본</a></figure><figure id="ac3fd732-025a-4730-85c3-c1061c733bda" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20ac3fd732025a473085c3c1061c733bda.html">김태연의 사본</a></figure><figure id="acbf2e65-6557-47e6-8994-4394ed728ac5" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20acbf2e65655747e689944394ed728ac5.html">장지원의 사본</a></figure><figure id="ef4da838-b3cf-4db2-928b-e15ec6d1ec0f" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%8B%E1%85%A9%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB%20ef4da838b3cf4db2928be15ec6d1ec0f.html">오창영의 사본</a></figure></details></li></ul><p id="82e3fdf0-9b52-4cc6-ab5d-6a0fbed23786" class="">2.3. 버전관리 및 코드매니징</p><ul id="4ba6c220-88b9-4a61-8f7b-53a0b3b41908" class="bulleted-list"><li>본 github주소에 팀을 만들고 코드 매니징을 수행하시면 되겠습니다.</li></ul><figure id="1d2bc1a1-5cfa-463a-b4ff-28a7981e12fb"><a href="https://github.com/CJOGIST" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">K-Digital Training for GIST supported by CJ Olive Networks</div><div class="bookmark-description">CJOGIST doesn&#x27;t have any public repositories yet. Repositories This organization has no public repositories. People This organization has no public members. You must be a member to see who&#x27;s a part of this organization. Most used topics Loading... You can&#x27;t perform that action at this time. You signed in with another tab or window.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/CJOGIST</div></div><img src="https://avatars.githubusercontent.com/u/89351309?s=280&amp;v=4" class="bookmark-image"/></a></figure><ul id="0feb4341-6943-47e1-8b59-96fcf8aec93f" class="toggle"><li><details open=""><summary>선생님들 github 아이디 </summary><div id="2c51e196-b7e4-45a4-a0af-2bab36b02079" class="collection-content"><h4 class="collection-title">VCS_ID</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>이름</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>github 이메일</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>팀</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>속성</th></tr></thead><tbody><tr id="9d880bca-b645-4296-a4c6-78dfeb6e69ff"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%92%E1%85%A1%E1%86%AB%E1%84%89%E1%85%B3%E1%86%BC%E1%84%92%E1%85%A7%E1%86%AB%209d880bcab6454296a4c678dfeb6e69ff.html">한승현</a></td><td class="cell-NY&gt;O">songhune@ajou.ac.kr</td><td class="cell-yRYI"></td><td class="cell-cp~Q"></td></tr><tr id="6e0f8d38-8894-40b8-9deb-bf63784be116"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%92%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A6%E1%84%8B%E1%85%AF%E1%86%AB%206e0f8d38889440b89debbf63784be116.html">홍세원</a></td><td class="cell-NY&gt;O">hsw011107@gmail.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-red">Recommend</span></td><td class="cell-cp~Q"></td></tr><tr id="6b817c00-b4c4-4e69-a7ba-8f3e985d1ed2"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%87%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%86%E1%85%B5%E1%86%AB%206b817c00b4c44e69a7ba8f3e985d1ed2.html">박성민</a></td><td class="cell-NY&gt;O">a2000707@naver.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-red">Recommend</span></td><td class="cell-cp~Q"></td></tr><tr id="9cf8cc08-c919-4e1e-8864-0a812dc74111"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AB%209cf8cc08c9194e1e88640a812dc74111.html">김태연</a></td><td class="cell-NY&gt;O">a27209008@gmail.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-blue">Face</span></td><td class="cell-cp~Q">조장</td></tr><tr id="3065bb23-a3d3-4cf1-8386-bc1b9821ef06"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%203065bb23a3d34cf18386bc1b9821ef06.html">장지원</a></td><td class="cell-NY&gt;O">jangjw5624@naver.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-blue">Face</span></td><td class="cell-cp~Q"></td></tr><tr id="40941b3e-185e-4b10-b9a8-381aaad51d55"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%8B%E1%85%A9%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%BC%2040941b3e185e4b10b9a8381aaad51d55.html">오창영</a></td><td class="cell-NY&gt;O">fortissimo91@naver.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-blue">Face</span></td><td class="cell-cp~Q"></td></tr><tr id="58e53ced-c7e1-4aca-9e60-036d3b3d8604"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%8B%E1%85%A9%E1%84%89%E1%85%A9%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AF%2058e53cedc7e14aca9e60036d3b3d8604.html">오송렬</a></td><td class="cell-NY&gt;O">osy23@naver.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-red">Recommend</span></td><td class="cell-cp~Q"></td></tr><tr id="0d55e83d-0918-41bf-bf06-62e41b27c24f"><td class="cell-title"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/VCS_ID%202c51e196b7e445a4a0af2bab36b02079/%E1%84%8B%E1%85%B5%E1%84%92%E1%85%A9%E1%84%89%E1%85%A6%200d55e83d091841bfbf0662e41b27c24f.html">이호세</a></td><td class="cell-NY&gt;O">leehosae@gmail.com</td><td class="cell-yRYI"><span class="selected-value select-value-color-red">Recommend</span></td><td class="cell-cp~Q">조장#archiving?</td></tr></tbody></table></div></details></li></ul><p id="d19f172f-3e4b-4d5a-a181-0cfd946be0af" class="">2.4. 최종성과물 및 포스트프로덕션</p><ul id="efaf9264-f04e-40f0-89ec-6f311ab7d350" class="bulleted-list"><li>최종 발표 보고 PPT 첨부<ul id="1b067223-23e8-4b5b-9f78-4d849a864802" class="toggle"><li><details open=""><summary>발표내용은 이하 내용을 포함해야 합니다</summary><ul id="759072d7-8bf3-42fe-ab81-4ba8b6d926b4" class="bulleted-list"><li>프로젝트 주제<ul id="9bb49d70-1819-4200-a570-e0d38ee51116" class="bulleted-list"><li>팀 구성 및 역할</li></ul><ul id="7f2c801a-72b3-4696-9e16-12efeabd586a" class="bulleted-list"><li>관련 연구 및 사용된 알고리즘의 이론적 정의</li></ul></li></ul><ul id="23276e6f-fcbe-440e-b5c3-75ffbe88e909" class="bulleted-list"><li>(팀원별) 기여 내용(이하 내용이 모두 들어가 있을 필요는 없습니다. 단, 도메인 적용은 필수)-수행절차 및 방법(기간별)<ul id="4891fa19-16a9-4847-ae8e-cd9ad78b8978" class="bulleted-list"><li>도메인 적용</li></ul><ul id="e7894a05-611e-4577-a3b7-edfbdda7181b" class="bulleted-list"><li>성능 개선</li></ul><ul id="f5b8be9b-0389-4b62-82fe-a90f19c05372" class="bulleted-list"><li>XAI</li></ul></li></ul><ul id="a519c145-cb1d-4beb-9fd7-387ac850067b" class="bulleted-list"><li>사용한 데이터셋</li></ul><ul id="3abc3745-e3af-423a-b62b-6f56f0ea9863" class="bulleted-list"><li>벤치마크 성능(정량적 평가)</li></ul><ul id="0c2937d9-08ce-4fa8-94f8-104445f8324d" class="bulleted-list"><li>느낀 점 및 정성적 평가</li></ul></details></li></ul></li></ul><ul id="7069ce65-9e99-441e-bf26-3100cabe84c3" class="bulleted-list"><li>학생분들의 수강 만족도를 조사하기 위해 이하의 설문을 프로젝트 최종일에 제출해 주시기 바랍니다.(링크 추후 생성)</li></ul><h1 id="7ea9b5f8-a0b2-49b2-b140-41f9246b9a9d" class="">설문조사_post_session</h1><figure id="d39bb0c8-02e5-4726-9cae-60d3fc4d321c"><a href="https://forms.gle/vgmuZsgn5eXgnn8A8" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">[KDT] Post-Session 설문지</div><div class="bookmark-description">안녕하세요, KDT의 PBL learning을 맡은 한승현입니다. 모두 지난 2주간의 교육을 훌륭히 수행해 주셔서 감사합니다. 여러분들의 참여와 적극적인 수행 덕분에 본 프로젝트에서 소기의 결과를 달성할 수 있었다고 생각됩니다. 후속 연구 및 진행을 위해 본 설문에 답해주시면 이후의 후속 프로그램의 귀중한 자료로 쓰일 예정이오니, 성실히 작성해 주시면 감사하겠습니다. 귀하의 건승을 기원합니다!</div></div><div class="bookmark-href"><img src="https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_qp2.png" class="icon bookmark-icon"/>https://forms.gle/vgmuZsgn5eXgnn8A8</div></div><img src="https://lh4.googleusercontent.com/T2RIsSET9vU8Zo7uqFP5Lfgg1KH6MYyCuvpveT9NN01PzNeSS0M9ja7qAB9CmUTBY9HMr2WpUBQ=w1200-h630-p" class="bookmark-image"/></a></figure><hr id="e22d7316-0c4d-4a57-a206-5ecaf8f63a88"/><h2 id="f4734812-435b-48a1-a2bd-0bcb53407d6c" class="">프로젝트_1+2</h2><p id="07a4dacf-073d-40cb-b92e-1aee51fc188a" class="">각자 개인별로 완수했던 수업과 관련된 내용에 대해 적어서 올려주시면 감사하겠습니다.</p><p id="9f3eb628-8f7c-4335-8e97-dbcf212db7aa" class="">내용 및 목차는 전혀 신경 쓰지 않아도 됩니다.</p><figure id="af2b2302-d8a2-4a47-bbd9-704432da7f3b"><div class="source"><a href="https://www.notion.so/044fca0aecab40dc996e30594c0ce219">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/044fca0a-ecab-40dc-996e-30594c0ce219/별첨2_팀별_프로젝트_수행_결과_작성_양식.pptx</a></div></figure><h2 id="353a6e3a-c6c8-42ee-9ae0-8129158f0d07" class="">다 작성하신 분은 바로 여기에 업데이트 해 주세요!</h2><p id="16f59316-d781-4f33-89d0-5dbbafff4d11" class="">만드신 ppt/pdf파일은 드래그 &amp; 드롭으로 업로드가 됩니다</p><h3 id="c82fddd7-3439-48aa-8803-fd674003b9bc" class="">3. 참고사항</h3><hr id="9e21025b-3365-4e8f-81e5-6824546a7fcf"/><figure id="3ef679bd-ac4b-4e21-aac5-d04fd8cc0423" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%5B%E1%84%80%E1%85%A1%E1%86%BC%E1%84%89%E1%85%A1%5D%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A6%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3_%E1%84%87%E1%85%A9%E1%84%80%E1%85%A9%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%203ef679bdac4b4e21aac5d04fd8cc0423.html"><span class="icon">📌</span>[강사] 데일리 체크리스트_보고자료</a></figure><figure id="b65495d8-cc4e-417b-ac5b-a9124b3fbe31" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%5BCJO%5D%E1%84%80%E1%85%AD%E1%84%8B%E1%85%B2%E1%86%A8%20%E1%84%8F%E1%85%A5%E1%84%85%E1%85%B5%E1%84%8F%E1%85%B2%E1%86%AF%E1%84%85%E1%85%A5%E1%86%B7%20%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20b65495d8cc4e417bac5ba9124b3fbe31.html"><span class="icon">📋</span>[CJO]교육 커리큘럼 수업계획서</a></figure><figure id="597cf11d-d57a-460c-97a8-5b6a1156e6ce" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%85%E1%85%A6%E1%84%91%E1%85%A5%E1%84%85%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B3-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%80%E1%85%A9%E1%84%8B%E1%85%AD%E1%86%BC%20597cf11dd57a460c97a85b6a1156e6ce.html"><span class="icon">🔗</span>레퍼런스-참고용</a></figure><figure id="abccea0c-d5b9-4fe2-9da1-4a09ef6ef85a" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%87%E1%85%A1%E1%86%AF%E1%84%91%E1%85%AD%20abccea0cd5b94fe29da14a09ef6ef85a.html"><span class="icon">💬</span>개인발표</a></figure><figure id="834a8ebb-7627-4976-aeca-b4c63215b638" class="link-to-page"><a href="%5BKDT%5D%20CJONS%20Project%20Based%20Learning%20Report%201e681b92c8934522a6936f4e1b97a00f/%E1%84%80%E1%85%AD%E1%84%8B%E1%85%B2%E1%86%A8%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%20834a8ebb76274976aecab4c63215b638.html"><span class="icon">📅</span>교육일정</a></figure><hr id="560e8446-9811-434b-a649-016b5d81f16e"/><p id="d9684d9b-1b6f-4fe5-a43e-33f846473b91" class="">
+</p></div></article></body></html>
